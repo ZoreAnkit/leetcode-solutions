@@ -18,30 +18,19 @@ class Solution
             for ($j = $i + 1; $j <= $arrCount; $j++) {
                 $rightSum += $nums[$j];
 
-                if ($leftSum == $rightSum)
+                if ($leftSum == $rightSum) {
+                    echo $i;
                     return $i;
+                }
             }
             $leftSum += $nums[$i];
             if ($leftSum < $rightSum)
                 $rightSum = 0;
         }
-        if ($leftSum != $rightSum)
+        if ($leftSum != $rightSum || $rightSum < $leftSum)
             return -1;
     }
 }
 
 $sol = new Solution();
-$sol->pivotIndex([1, 2, 3]); 
-
-/* TEST CASES 
-
-1. [1,7,3,6,5,6] 
-OUTPUT: 3
-
-2. [1,2,3] 
-OUTPUT: -1
-
-3. [2,1,-1]
-OUTPUT: 0
-
-*/
+$sol->pivotIndex([-1, -1, -1, -1, -1, 0]);
